@@ -3,6 +3,11 @@ import numpy as np
 
 
 def egalitarian_division(matrix):
+    """
+    >>> egalitarian_division(np.array([[81, 19, 1], [70, 1, 29]]))
+    Agent #1 gets 0.53 of resource #1, 1.00 of resource #2, 0.00 of resource #3
+    Agent #2 gets 0.47 of resource #1, 0.00 of resource #2, 1.00 of resource #3
+    """
     # Input: matrix (n x m) where matrix[i][j] is the value agent i assigns to resource j
     n, m = matrix.shape  # n = number of agents, m = number of resources
 
