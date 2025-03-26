@@ -39,13 +39,5 @@ def egalitarian_division(matrix):
 
 
 if __name__ == "__main__":
-    # egalitarian_division(np.array([
-    #     [50, 30, 20],
-    #     [40, 40, 20],
-    #     [10, 30, 60],
-    # ]))
-
-    egalitarian_division(np.array([
-        [81, 19, 1],
-        [70, 1, 29]],
-    ))
+    import doctest
+    doctest.testmod()
