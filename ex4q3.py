@@ -26,17 +26,25 @@ def main():
     votes = {}
     seats = {}
 
+    # Load data
     with StringIO(data) as f:
         reader = DictReader(f)
 
+        # Initialize structures
         for line in reader:
             votes[line["name"]] = int(line["votes"])
+
+            # Each party starts with 0 seats
             seats[line["name"]] = 0
 
+    # Iterate until all seats have been apportioned
     for i in range(TOTAL_SEATS):
+        # Winner of each round will have the greatest priority
         max_priority = 0
         winner = None
+
         for party, count in votes.items():
+            # Priority is calculated using the Huntington-Hill method
             current_seats = seats[party]
             denominator = max(sqrt(current_seats * (current_seats + 1)), 1)
             priority = count / denominator
@@ -45,8 +53,10 @@ def main():
                 max_priority = priority
                 winner = party
 
+        # Apportion the winner one more seat
         seats[winner] += 1
 
+    # Print results
     for party, count in seats.items():
         print(f"{party}: {count} seats")
 
